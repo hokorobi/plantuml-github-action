@@ -24,7 +24,7 @@ jobs:
       - name: Bump docker version
         if: ${{ steps.plantuml.outputs.tag != steps.current.outputs.tag }}
         run: |
-          sed -i "s#holowinski/plantuml:.*#holowinski/plantuml:${{ steps.plantuml.outputs.tag }}\"#" action.yml
+          sed -i "s#hokorobi/plantuml:.*#hokorobi/plantuml:${{ steps.plantuml.outputs.tag }}\"#" action.yml
 
       - name: Push Local Changes
         if: ${{ steps.plantuml.outputs.tag != steps.current.outputs.tag }}
@@ -55,6 +55,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: holowinski/plantuml:latest, holowinski/plantuml:${{ steps.plantuml.outputs.tag }}
+          tags: hokorobi/plantuml:latest, hokorobi/plantuml:${{ steps.plantuml.outputs.tag }}
           build-args: |
             PLANTUML_VERSION=${{ steps.plantuml.outputs.tag }}
