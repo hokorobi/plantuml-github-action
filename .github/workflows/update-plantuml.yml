@@ -28,9 +28,8 @@ jobs:
 
       - name: Push Local Changes
         if: ${{ steps.plantuml.outputs.tag != steps.current.outputs.tag }}
-        uses: stefanzweifel/git-auto-commit-action@v4.7.2
+        uses: stefanzweifel/git-auto-commit-action@v4.13.1
         with:
-          ref: ${{ github.head_ref }}
           commit_message: "Bump PlantUML to ${{ steps.plantuml.outputs.tag }}"
           tagging_message: ${{ steps.plantuml.outputs.tag }}
 
