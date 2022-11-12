@@ -8,18 +8,18 @@ jobs:
   bump_plantuml:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - id: plantuml
         # using plantuml-server because plantuml for some reason returns empty list of releases
         name: PlantUML latest release
         run: |
-          echo "::set-output name=tag::$(curl -s https://api.github.com/repos/plantuml/plantuml-server/releases/latest | grep tag_name | sed 's/.*"tag_name": "v\(.*\)",/\1/')"
+          echo "tag=$(curl -s https://api.github.com/repos/plantuml/plantuml-server/releases/latest | grep tag_name | sed 's/.*"tag_name": "v\(.*\)",/\1/')" >> $GITHUB_OUTPUT
 
       - name: "Get latest tag"
         id: current
         run: |
-          echo "::set-output name=tag::$(git ls-remote --tags --refs --sort="v:refname" origin | tail -n1 | sed 's/.*\///')"
+          echo "tag=$(git ls-remote --tags --refs --sort="v:refname" origin | tail -n1 | sed 's/.*\///')" >> $GITHUB_OUTPUT
 
       - name: Bump docker version
         if: ${{ steps.plantuml.outputs.tag != steps.current.outputs.tag }}
