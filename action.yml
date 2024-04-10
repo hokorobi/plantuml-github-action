@@ -15,6 +15,6 @@ inputs:
 
 runs:
   using: "docker"
-  image: "docker://hokorobi/plantuml:1.2024.3"
+  image: "docker://hokorobi/plantuml:1.2024.4"
   args:
     - ${{ inputs.args }}
