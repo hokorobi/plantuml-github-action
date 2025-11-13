@@ -52,7 +52,7 @@ jobs:
       - name: Build and push
         if: ${{ steps.plantuml.outputs.tag != steps.current.outputs.tag }}
         id: docker_build
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: true
           tags: hokorobi/plantuml:latest, hokorobi/plantuml:${{ steps.plantuml.outputs.tag }}
