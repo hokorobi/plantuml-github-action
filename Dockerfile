@@ -1,4 +1,4 @@
-FROM openjdk:17-alpine
+FROM openjdk:19-ea-alpine
 
 ARG PLANTUML_VERSION
 
