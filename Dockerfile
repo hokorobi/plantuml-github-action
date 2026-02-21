@@ -1,4 +1,4 @@
-FROM openjdk:19-ea-alpine
+FROM eclipse-temurin:17-jdk-alpine
 
 ARG PLANTUML_VERSION
 
