@@ -2,7 +2,7 @@ FROM eclipse-temurin:17-jdk-alpine
 
 ARG PLANTUML_VERSION
 
-ENV LANG en_US.UTF-8
+ENV LANG=en_US.UTF-8
 RUN apk add --no-cache graphviz font-droid font-droid-nonlatin curl \
     && mkdir /app \
     && curl -L https://github.com/plantuml/plantuml/releases/download/v${PLANTUML_VERSION}/plantuml-${PLANTUML_VERSION}.jar -o /app/plantuml.jar \
